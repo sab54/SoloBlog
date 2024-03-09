@@ -1,0 +1,85 @@
+<!-- I wrote this code -->
+<!-- reader article page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-zzDd6AWpGEKww5Y4fi04kCDniid6yQy8dNh0kNooaIkPLOx1o3Og3DLKWQb8z6k9Vhv3S5l6go5OoqPMM3PcLw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Reader Article Page</title>
+</head>
+
+<body>
+
+    <!-- Back Button -->
+    <button class="back-button"><a href="/reader/home">Back</a></button>
+
+    <div class="article-box">
+        <h1 class="article-title">
+            <%= article.articles_title %>
+        </h1>
+        <p><em>Author Name: </em>
+            <%= article.authorsName %> | Published on: <%= article.published_at %>
+        </p>
+    </div>
+
+    <p class="article-text">Article text: <%= article.articles_content %>
+    </p>
+
+    <!-- Like button -->
+    <form method="post" action="/reader/article/<%= article.articles_id %>/like">
+        <button type="submit"><i id="likeIcon" class="fa fa-heart"></i></button>
+    </form>
+
+    <p class="article-info">Number of Views: <%= article.reads %>
+    </p>
+    <p class="article-info">Number of Likes: <%= article.likes %>
+    </p>
+
+    <!-- Form for submitting new comments -->
+    <form method="post" action="/reader/article/<%= article.articles_id %>/comment" class="comment-form">
+        <h2>Comment here:</h2>
+        <label for="commentName">Your Name:</label>
+        <input type="text" id="commentName" name="commentName" required>
+        <br>
+        <label for="commentContent">Add a Comment:</label>
+        <textarea id="commentContent" name="commentContent" rows="4" cols="50" required></textarea>
+        <br>
+        <button type="submit">Submit Comment</button>
+    </form>
+
+    <!--Comments listed -->
+    <h2>Previous Comments</h2>
+    <ul class="comment-list">
+        <% comments.forEach(comment=> { %>
+            <li class="comment">
+                <p><strong>
+                        <%= comment.comment_name %>:
+                    </strong></p>
+                <p>
+                    <%= comment.comment_content %>
+                </p>
+                <p>Posted on <%= comment.created_at %>
+                </p>
+            </li>
+            <% }) %>
+    </ul>
+
+    <footer>
+        <p>&copy; 2024 SoloBlogCraft. All rights reserved.</p>
+        <div class="social-media-buttons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+<!-- End of my code -->

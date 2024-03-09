@@ -1,0 +1,53 @@
+<!-- I wrote this code -->
+<!-- author-edit.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Edit</title>
+</head>
+
+<body>
+    <button class="back-button"><a href="/author/home">Back</a></button>
+    <h1>Edit Article Page</h1>
+
+    <div class="edit-update">
+        <div class="edit-info">
+            <p>Created: <%= article.created_at %>
+            </p>
+            <p>Last Modified: <%= article.modified_at %>
+            </p>
+            <p>Status: <%= article.published_at ? 'Published' : 'Not Published' %>
+            </p>
+        </div>
+
+        <form action="/author/edit-article/<%= article.articles_id %>" method="post">
+            <!-- Article Title input -->
+            <label for="articles_title">Article Title:</label>
+            <input type="text" id="articles_title" name="articles_title" value="<%= article.articles_title %>" required>
+
+            <!-- Article Content input -->
+            <label for="articles_content">Article Text:</label>
+            <textarea id="articles_content" name="articles_content" required><%= article.articles_content %></textarea>
+            <br />
+            <!-- Submit button -->
+            <button type="submit">Update Article</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SoloBlogCraft. All rights reserved.</p>
+        <div class="social-media-buttons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
+<!-- End of my code -->

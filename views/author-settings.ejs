@@ -1,0 +1,56 @@
+<!-- I wrote this code -->
+<!-- author-settings.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Author's Settings</title>
+</head>
+
+<body>
+    <!-- Back Button -->
+    <button class="back-button"><a href="/author/home">Back</a></button>
+
+    <h1>Author Settings Page</h1>
+    <div class="setting-info">
+        <h2>Your Author Name: <%= authorsName %>
+        </h2>
+        <h2>Title:<%= blogTitle %>
+        </h2>
+    </div>
+
+    <!-- Form for updating settings -->
+    <div class="setting-update">
+        <form action="/author/settings" method="post">
+            <!-- Blog Title input -->
+            <label for="blogTitle">Blog Title:</label>
+            <input type="text" id="blogTitle" name="blogTitle" value="<%= blogTitle %>">
+
+            <br />
+
+            <!-- Author Name input -->
+            <label for="authorsName">Author Name:</label>
+            <input type="text" id="authorsName" name="authorsName" value="<%= authorsName %>">
+
+            <!-- Submit button -->
+            <button type="submit">Update Settings</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SoloBlogCraft. All rights reserved.</p>
+        <div class="social-media-buttons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+<!-- End of my code -->

@@ -1,0 +1,73 @@
+<!-- I wrote this code -->
+<!-- register page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Registration Page</title>
+</head>
+
+<body>
+    <div class="login header">
+        <a href="/" class="logo">SoloBlogCraft</a>
+        <div class="header-right">
+            <a href="/">Home</a>
+            <a href="/reader/home">Reader</a>
+            <a class="active" href="/author/home">Author SignUp</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <div class="user">
+                <h1>Author Registration</h1>
+                <form method="post" action="/register" class="login-form">
+                    <div class="input-group">
+                        <label for="author_email">Your Email:</label>
+                        <input type="text" id="author_email" name="author_email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                        <input type="checkbox" onclick="tooglePassword()">Show Password
+                    </div>
+                    <button type="submit">Register</button>
+                    <br />
+                    <p>Note:</p>
+                    <p>Password should be minimum 8 characters with at least one number and capital letter</p>
+                    <a href="/login" class="register-link">Already have an account?</a>
+                </form>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="/images/login-background.jpg">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SoloBlogCraft. All rights reserved.</p>
+        <div class="social-media-buttons">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+        </div>
+    </footer>
+
+    <script>
+        function tooglePassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+<!-- End of my code -->

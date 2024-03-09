@@ -1,0 +1,169 @@
+<!-- I wrote this -->
+<!-- this is author-home -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Author Home Page</title>
+</head>
+
+<body class="author-home">
+  <div class="dropdown">
+    <button class="dropbtn">
+      <%= authorsName %> <i class="fa fa-angle-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/author/settings">Settings</a>
+      <a href="/logout">Log Out</a>
+    </div>
+  </div>
+  <h3>Author Home Page<h3>
+      <div>
+        <h2>Welcome <%= authorsName %>!</h2>
+        <h3>Blog Title:<%= blogTitle %>
+        </h3>
+        <button class="create"><a href="/author/create-draft">Create New Draft</a></button>
+      </div>
+      <h2>Draft Articles</h2>
+      <table border="1" style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th style="padding: 10px; background-color:#789686; color: #fff;">Title</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Subtitle</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Created At</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Last Modified</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% draftArticles.forEach(article=> { %>
+            <tr id="article_<%= article.articles_id %>">
+              <td style="padding: 10px;">
+                <%= article.articles_title %>
+              </td>
+              <td style="padding: 10px;">
+                <%= article.articles_content %>
+              </td>
+              <td style="padding: 10px;">
+                <%= article.created_at %>
+              </td>
+              <td style="padding: 10px;">
+                <%= article.modified_at %>
+              </td>
+              <td>
+
+                <button class="edit"><a href="/author/edit-article/<%= article.articles_id %>">Edit</a></button>
+
+                <!-- Delete Button -->
+                <form method="post" action="/author/home">
+                  <input type="hidden" name="articles_id" value="<%= article.articles_id %>">
+                  <input type="hidden" name="action" value="delete">
+                  <button class="delete" type="submit">Delete</button>
+                </form>
+
+                <!-- Publish Button -->
+                <form method="post" action="/author/home" onsubmit="return confirmPublish();">
+                  <input type="hidden" name="articles_id" value="<%= article.articles_id %>">
+                  <input type="hidden" name="action" value="publish">
+                  <button class="publish" type="submit">Publish</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+      <br />
+      <h2>Published Articles</h2>
+      <table border="1" style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Author Title</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Subtitle</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Created At</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Published At</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Last Modified</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Reads</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Likes</th>
+            <th style="padding: 10px; background-color: #789686; color: #fff;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% publishedArticles.forEach(article=> { %>
+            <tr id="article_<%= article.articles_id %>">
+              <td style="padding: 10px;">
+                <%= article.articles_title %>
+              </td>
+              <td style="padding: 10px;">
+                <%= article.articles_content %>
+              </td>
+              <td style="padding: 10px;">
+                <%= article.created_at %>
+              </td>
+              <td style="padding: 10px;">
+                <%= article.published_at %>
+              </td>
+              <td style="padding: 10px;">
+                <%= article.modified_at %>
+              </td>
+              <td style="padding: 10px;">
+                <%= article.reads %>
+              </td>
+              <td style="padding: 10px;">
+                <%= article.likes %>
+              </td>
+              <td>
+                <!-- Unpublish Button -->
+                <form method="post" action="/author/home">
+                  <input type="hidden" name="articles_id" value="<%= article.articles_id %>">
+                  <input type="hidden" name="action" value="unpublish">
+                  <button class="unpublish" type="submit">Unpublish</button>
+                </form>
+
+                <!-- Delete Button -->
+                <form method="post" action="/author/home">
+                  <input type="hidden" name="articles_id" value="<%= article.articles_id %>">
+                  <input type="hidden" name="action" value="delete">
+                  <button class="delete" type="submit">Delete</button>
+                </form>
+
+                <!-- Share Button -->
+                <form method="post" action="/author/home"
+                  onsubmit="return generateShareableLink('<%= article.articles_id %>');">
+                  <input type="hidden" name="articles_id" value="<%= article.articles_id %>">
+                  <input type="hidden" name="action" value="share">
+                  <button class="share" type="submit">Share</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+
+      <footer>
+        <p>&copy; 2024 SoloBlogCraft. All rights reserved.</p>
+        <div class="social-media-buttons">
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-google"></a>
+        </div>
+      </footer>
+
+      <script>
+        // this is for author-home
+        function confirmPublish() {
+          return confirm("Are you sure you want to publish this article?");
+        }
+
+        function generateShareableLink(articleId) {
+          alert("http://localhost:3000/reader/article?id=" + articleId);
+          return false; // Returning false to prevent the form from submitting
+        }
+      </script>
+</body>
+
+</html>
+<!-- End of my code -->
