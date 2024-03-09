@@ -1,0 +1,413 @@
+/* main.css */
+/* body used for all pages */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.header a {
+    color: white;
+    float: left;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.header a.logo{ font-size: 25px; font-weight: bold; }
+.header a.active { background-color: #CAD7D1; color: #333333; }
+
+.header-right { float: right; margin-right: 50px; }
+
+.header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+}
+
+.back-button {
+    background-color: #CAD7D1;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.back-button a {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+    .header a { float: none; display: block; text-align: left; }
+    .header-right { float: none; }
+}
+
+/* end of all pages */
+
+/* index home page */
+
+.header {
+    overflow: hidden;
+    padding: 20px 10px;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("/images/background-header.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+.header.first { background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), #455546; color: white;}
+.header.second { background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), #3D3252; color: white;}
+
+/* end of index home page */
+
+/* login & register page */
+
+.header.login {
+    overflow: hidden;
+    padding: 20px 10px;
+    min-height: 10vh; /* Adjust the value according to your preference */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("/images/background-header.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+.user-logo {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #333; 
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    max-width: 1000px; 
+    height: 500px; /* Set the desired height */
+    margin-left: 280px;
+    margin-top: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), #789686;
+}
+
+.form-container, .image-container {
+    flex: 1;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.user {
+    text-align: center;
+    color: white;
+}
+
+.user h1 { margin-bottom: 20px; }
+
+.login-form { display: flex; flex-direction: column; }
+
+.input-group { margin-bottom: 15px; }
+
+.user label { color: white;; }
+
+.user input {
+    padding: 10px;
+    width: 600px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.user button {
+    background-color: #c59fc8;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.user button, .setting-update, .edit-update button:hover {
+    background-color: #a082b5; /* Darker green on hover */
+    color: #333; /* Dark text color on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow on hover */
+}
+
+.register-link a {  color: white;; text-decoration : double; }
+
+.image-container img { width: 100%; height: 100%; object-fit: cover; }
+
+/* end of login and registration page */
+
+/* Start of author-homepage */
+.author-home {
+    padding: 30px;
+}
+
+.blog-create {
+    background-color: #c59fc8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.dropbtn {
+    background-color: #CAD7D1;
+    color: rgb(61, 58, 58);
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 160px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover { background-color: #CAD7D1; color: white; }
+
+.dropdown:hover .dropdown-content { display: block; }
+
+.author-home tbody button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+
+}
+
+.author-home tbody button:hover {
+    background-color: #1e7a83;
+}
+
+.edit a {
+    text-decoration: none;
+    color: white;
+}
+
+.create {
+    background-color: black ;
+}
+
+.create a {
+    text-decoration: none;
+    color: white;
+
+}
+
+/* start of author Settings and edit page */
+.setting-info {
+    text-align: center;
+}
+
+.setting-update, .edit-update {
+    background-color: #789686;
+    border: 2px solid black;
+    text-align: center;
+    padding: 30px;
+    max-width: 400px; /* Set your desired maximum width */
+    margin: 0 auto; /* Center the div horizontally */
+}
+
+.setting-update label,
+.setting-update input,
+.setting-update button, 
+.edit-update label, 
+.edit-update input,
+.edit-update textarea,
+.edit-update button{
+    display: block;
+    margin: 0 auto; 
+    width: 200px;
+    margin-bottom: 15px;
+    
+}
+
+.setting-update  button ,
+.edit-update button {
+    border: none;
+    background-color: #c59fc8;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor:pointer;
+}
+
+/* end author Settings and edit page */
+
+/* start of reader home page */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.card + .card { margin-top: 20px; }
+
+.card a { color: #CAD7D1 ; text-decoration: none; font-weight: bold; }
+
+.card a:hover { text-decoration: underline; }
+
+.card .meta-info { color: #666; margin-top: 8px; }
+
+/* end of reader home page */
+
+/* start of reader article Page styles */
+.article-title {
+    margin-top: 20px;
+    font-size: 50px; /* Adjust the font size as needed */
+    color: #333; /* Set your desired text color */
+}
+
+.article-box {
+    text-align: center;
+}
+
+.article-text {
+    margin-top: 20px;
+    font-size: 18px; /* Adjust the font size as needed */
+    line-height: 1.6; /* Adjust the line height for better readability */
+    color: #555; /* Set your desired text color */
+}
+
+.article-text em {
+    font-style: italic;
+    color: #888; /* Set your desired italic text color */
+}
+
+/* Comment Styles */
+.comment-form {
+    margin-top: 20px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.comment-form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.comment-form button {
+    background-color: #CAD7D1;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.comment-form button:hover {
+    background-color: #2a9ea8;
+}
+
+.comment-list {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.comment {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+    margin: 8px 0;
+}
+
+.comment strong {
+    color: #32CACD;
+}
+
+/* end of reader article page */
+
+/* footer for all pages  */
+footer{
+    text-align: center;
+}
+
+footer .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    color: black;
+}
+
+footer .fa:hover {
+    opacity: 0.7;
+}
+
