@@ -1,0 +1,50 @@
+<!-- I wrote this code -->
+<!-- reader-home.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Reader Home Page</title>
+</head>
+
+<body>
+    <div class="login header">
+        <a href="/" class="logo">SoloBlogCraft</a>
+        <div class="header-right">
+            <a href="/">Home</a>
+            <a class="active" href="/reader/home">Reader</a>
+            <a href="/author/home">Author Login</a>
+        </div>
+    </div>
+
+    <h2>Reader Home Page</h2>
+
+    <% publishedArticles.forEach(article=> { %>
+        <div class="card">
+            <a href="/reader/article/<%= article.articles_id %>/view">
+                <h3>Article Title: <%= article.articles_title %>
+                </h3>
+            </a>
+            <p>Published on <%= article.published_at %>
+            </p>
+            <p>Author Name: <%= article.authorsName %> | Blog Title: <%= article.blogTitle %>
+            </p>
+            <% }) %>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 SoloBlogCraft. All rights reserved.</p>
+            <div class="social-media-buttons">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google"></a>
+            </div>
+        </footer>
+</body>
+
+</html>
+<!-- End of my code -->
